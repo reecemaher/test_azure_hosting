@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  form(name="submit", method="post", action="/hello")
+    input( type="hidden", name="_method", value="PUT")
+    div.input
+      //span.label Title
+    p Name  
+      input(type="text", name="fname")
+    div.actions
+      input(type="submit", value="add")
+
