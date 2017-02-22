@@ -20,7 +20,22 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+/*
+var expressSessionsOptions = {
+  cookie :{
+    maxAge:1000*60
+  },
+  secret:'tellingJokes',
+  resave:false,
+  saveUninitialized:false
+}
+
+app.use(sessions(expressSessionOptions));*/
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+
 
 app.use('/', index);
 app.use('/users', users);
