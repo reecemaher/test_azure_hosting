@@ -5,8 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var session = require('express-session')
+
+
 var index = require('./routes/index');
 var users = require('./routes/users');
+
+
 
 var app = express();
 
@@ -20,8 +25,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-/*
-var expressSessionsOptions = {
+
+var expressSessionOptions = {
   cookie :{
     maxAge:1000*60
   },
@@ -30,7 +35,7 @@ var expressSessionsOptions = {
   saveUninitialized:false
 }
 
-app.use(sessions(expressSessionOptions));*/
+app.use(session(expressSessionOptions));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
