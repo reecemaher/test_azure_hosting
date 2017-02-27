@@ -1,30 +1,39 @@
 var express = require('express');
 var router = express.Router();
-//var myJokes =[];
-
+//myJokes =[];
+var fin = false;
 /* GET home page. */
 router.get('/jokes', function(req, res, next) {
 
-  console.log(myJokes);
+  req.session.myJokes;
 
   if(!req.session.hasOwnProperty('myJokes')){
-    var myJokes = [];
-    console.log("new Session", myJokes);
+    req.session.myJokes = ["Working Session"];
+    console.log(req.session.myJokes);
   }
 
   else{
-    console.log("old session")
+        var fin = true;
+        req.session.myJokes = ["time up"];
+        console.log(req.session.myJokes);
+
 
   }
-  res.render('jokes', { title: 'Jokes',lists: myJokes });
+  res.render('jokes', { title: 'Jokes List',lists: req.session.myJokes });
 
   });
 
 router.post('/jokes',function(req,res,next){
+  //req.session.myJokes;
+ if(req.session.hasOwnProperty('myJokes')){
   var myJoke = req.body.joke;
-  myJokes.push(myJoke);
-  res.render('jokes', {lists: myJokes});
-  
+  req.session.myJokes.push(myJoke);
+  res.render('jokes', {lists: req.session.myJokes});
+  if(fin == true){
+    res.render('jokes', { title: 'Jokes List'});
+
+  }
+ }
 });
 
 

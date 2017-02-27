@@ -28,7 +28,7 @@ app.use(cookieParser());
 
 var expressSessionOptions = {
   cookie :{
-    maxAge:1000*60
+    maxAge:1000*6
   },
   secret:'tellingJokes',
   resave:false,
