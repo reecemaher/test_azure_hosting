@@ -4,10 +4,12 @@ block content
   h1= title
   p Welcome to #{title}
 
- 
+
   br
-  ul
-    li #{jokeList}
+  ul 
+   each i in lists
+    li= i
+
 
   form(name="submit", method="POST", action="/jokes")
     label(for="joke") Write your joke:

@@ -4,7 +4,12 @@ block content
   h1= title
   p Welcome to #{title}
 
-  form(name="submit", method="POST", action="/jokes")
+ br
+  ul 
+    each j in myJokes
+      li= j
+
+  form(name="submit", method="POST", action="/users")
     label(for="joke") Write your joke:
     input(type="text", name="joke" id="joke")
     br 
